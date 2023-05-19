@@ -1,2 +1,2 @@
 # KODAMA.Caccio
-KODAMA:  New vision for dimentionallity reduction and clustering analysis of different omics data 
+KODAMA: Enhanced clustering and dimensionality reduction of high-throughput omics data
