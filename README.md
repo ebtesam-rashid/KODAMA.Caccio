@@ -1,2 +1,2 @@
 # KODAMA.Caccio
-KODAMA: Enhanced clustering and dimensionality reduction of high-throughput omics data
+KODAMA: Enhanced dimensionality reduction and clustering of high-throughput omics data
