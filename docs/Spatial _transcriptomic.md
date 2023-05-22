@@ -1,3 +1,3 @@
-# KODAMA for Spatial Transcriptomics
+## KODAMA for Spatial Transcriptomics
 
 
