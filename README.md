@@ -1,4 +1,4 @@
-# KODAMA.tkcaccia
+# KODAMA
 Enhanced dimensionality reduction for high Throughput omics data
 
 ## Overview 
