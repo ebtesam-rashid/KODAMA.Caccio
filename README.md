@@ -2,7 +2,7 @@
 KODAMA: Enhanced dimensionality reduction for High Throughput omics data
 ## Overview 
 
-KODAMA is an unsupervised and semi-supervised learning algorithm that performs feature extraction from noisy and high-dimensional data. It facilitates identification of patterns representing underlying groups on all samples in a data set. Based on Cacciatore S, Tenori L, Luchinat C, Bennett PR, MacIntyre DA. (2017) Bioinformatics <doi:10.1093/bioinformatics/btw705> and Cacciatore S, Luchinat C, Tenori L. (2014) Proc Natl Acad Sci USA <doi:10.1073/pnas.1220873111>.
+KODAMA is an unsupervised and semi-supervised learning algorithm that performs feature extraction from noisy and high-dimensional data. It facilitates identification of patterns representing underlying groups on all samples in a data set. Based on [Cacciatore S, Tenori L, Luchinat C, Bennett PR, MacIntyre DA. (2017) Bioinformatics] (doi:10.1093/bioinformatics/btw705) and [Cacciatore S, Luchinat C, Tenori L. (2014) Proc Natl Acad Sci USA] (doi:10.1073/pnas.1220873111).
 
 This is a version in developing of KODAMA with landmarks to adapt the algorithm to the analysis of data set with more than 10,000 entries.
 The wrapper for the C++ implementation of Barnes-Hut t-Distributed Stochastic Neighbor Embedding has been integrated to convert the KODAMA's dissimilarity matrix in a low dimensional space.
