@@ -50,5 +50,5 @@ plot6 <-plot(res_KODAMA_UMAP,pch=21,bg=rainbow(4),main="KODAMA_UMAP")
 
 
 ## Examples
-1. Simulated data
-2. GEOMx data
+1. [Simulated data](https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/docs/Spatial_trancsriptomic_data/Silumated_data.md).
+2. [GEOMx data](https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/docs/Spatial_trancsriptomic_data/Geomx_data.md)
