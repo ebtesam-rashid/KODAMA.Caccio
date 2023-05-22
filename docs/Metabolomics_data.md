@@ -40,3 +40,5 @@ plot3 <-plot(res_UMAP,pch=21,bg=rainbow(300),main="UMAP")
 plot4 <-plot(res_KODAMA_MDS,pch=21,bg=rainbow(300),main="KODAMA_MDS",ylim=range(res_KODAMA_MDS[,1]))
 plot5 <-plot(res_KODAMA_tSNE,pch=21,bg=rainbow(300),main="KODAMA_tSNE")
 plot6 <-plot(res_KODAMA_UMAP,pch=21,bg=rainbow(300),main="KODAMA_UMAP")
+
+![This is an image](https://github.com/tkcaccia/Documents/blob/main/MetRef.png)
