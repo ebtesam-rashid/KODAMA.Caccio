@@ -35,4 +35,4 @@ library("KODAMA")
 
 2.  [Single cell RNA seq data](https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/docs/Single_cell_RNA_seq.md).
 
-3.  [Spatial Transcriptomic data](https://github.com/ebtesam-rashid/KODAMA.Caccio/tree/main/docs/Spatial_trancsriptomic_data).
+3.  [Spatial Transcriptomic data](https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/docs/Spatial%20_transcriptomic.md).
