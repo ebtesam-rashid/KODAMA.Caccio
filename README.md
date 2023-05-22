@@ -1,11 +1,11 @@
 # KODAMA.tkcaccia
-Enhanced dimensionality reduction for High Throughput omics data
+Enhanced dimensionality reduction for high Throughput omics data
 
 ## Overview 
 
 KODAMA is an unsupervised and semi-supervised learning algorithm that performs feature extraction from noisy and high-dimensional data. It facilitates identification of patterns representing underlying groups on all samples in a data set. 
 
-This is a version in developing of KODAMA with landmarks to adapt the algorithm to the analysis of data set with more than 10,000 entries. The wrapper for the C++ implementation of Barnes-Hut t-Distributed Stochastic Neighbor Embedding has been integrated to convert the KODAMA's dissimilarity matrix in a low dimensional space.
+This is a version in developing of KODAMA with landmarks to adapt the algorithm to the analysis of data set with more than 10,000 entries. The wrapper for the C++ implementation of Barnes-Hut t-Distributed Stochastic Neighbor Embedding has been integrated to convert the KODAMA's dissimilarity matrix in a low dimensional space. 
 
 KODAMA was built on accuracy maximization algorithms described in detail in the following publication:
 
@@ -20,7 +20,12 @@ KODAMA was built on accuracy maximization algorithms described in detail in the 
 
 ## Installation
 
+The KODAMA is avialable on (https://CRAN.R-project.org/package=KODAMA).
+
 ```
+install.packages("KODAMA_2.9.tar.gz", repos=NULL, type="source")
+
+library("KODAMA")
 
 
 
