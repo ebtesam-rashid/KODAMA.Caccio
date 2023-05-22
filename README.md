@@ -1,5 +1,5 @@
 # KODAMA
-Enhanced dimensionality reduction for high Throughput omics data
+Enhanced dimensionality reduction for high throughput omics data
 
 ## Overview 
 
