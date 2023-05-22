@@ -33,6 +33,6 @@ library("KODAMA")
 ## Tutorials 
 1.  [Metabolomic data](https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/docs/Metabolomics_data.md).
 
-2.  [Single cell RNA seq data](https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/docs/Single_cell_data.md).
+2.  [Single cell RNA seq data](https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/docs/Single_cell_RNA_seq.md).
 
 3.  [Spatial Transcriptomic data](https://github.com/ebtesam-rashid/KODAMA.Caccio/edit/main/docs/Spatial_transcriptomic_data.md).
