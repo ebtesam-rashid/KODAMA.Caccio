@@ -29,7 +29,6 @@ res_KODAMA_tSNE=KODAMA.visualization(kk,method = "t-SNE")
 res_KODAMA_UMAP=KODAMA.visualization(kk,method = "UMAP")
 
 par(mfrow = c(2,3), oma = c(2,2,0,0) + 0.1, mar = c(1,1,1,1) + 1)
-
 labels <- rep(c("#FF0000","#0000FF","#008000","#FFFF00"),each= 50)
 plot(res_MDS,pch=21,bg=labels,main="MDS")
 plot(res_tSNE,pch=21,bg=labels,main="tSNE")
@@ -40,7 +39,10 @@ plot(res_KODAMA_UMAP,pch=21,bg=labels,main="KODAMA_UMAP")
 title(xlab = "Fisrt dimention", ylab = "Second dimention", outer = TRUE, line = 0.01)
 
 ```
-![This is an image](https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/simulated%20data%201.png)
-
+<p>
+  <p align="center">
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/simulated%20data%201.png" alt="hello-light" height="700" width="800" />
+  </p>
+</p>
 
 ## Examples
