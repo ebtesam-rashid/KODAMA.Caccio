@@ -33,7 +33,11 @@ plot(res_KODAMA_tSNE,pch=21,bg=rainbow(22)[class],main="KODAMA_tSNE")
 plot(res_KODAMA_UMAP,pch=21,bg=rainbow(22)[class],main="KODAMA_UMAP")
 title(xlab = "Fisrt dimention", ylab = "Second dimention", outer = TRUE, line = 0.01)
 ```
+<p>
+  <p align="center">
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/metabolomics.png" alt="hello-light" height="220" width="210" />
+  </p>
+</p>
 
-![This is an image, align="center"](https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/metabolomics.png)
 
 
