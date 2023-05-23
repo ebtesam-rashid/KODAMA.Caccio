@@ -5,69 +5,45 @@ The data belong to a cohort of 22 healthy donors (11 male and 11 female) where e
 ```
 
 library(KODAMA)
-data(MetRef)
-u=MetRef$data
-u=u[,-which(colSums(u)==0)]
-u=normalization(u)$newXtrain
-u=scaling(u)$newXtrain
-class=as.numeric(as.factor(MetRef$gender))
-class2=as.numeric(as.factor(MetRef$donor))
+dimensions=2
+size_cluster=50
+cluster_number=2^dimensions
+noisy_dimension <- 9
+v=matrix(rep(vertex(c(0,10),dims=dimensions),each=size_cluster),ncol=dimensions)
+ma=v+rnorm(length(v),sd = 0.2)
+if(noisy_dimension>0){
+  ma=cbind(ma,matrix(rnorm(cluster_number*size_cluster*noisy_dimension),ncol=noisy_dimension))}
+ma=scale(ma)
 
-tt=Rtsne(u,perplexity = 10)
-
-kk=KODAMA.matrix(u)
-custom.settings = Rtsne.defaults
-custom.settings$perplexity=20
-res_KODAMA_tSNE=KODAMA.visualization(kk,method = "t-SNE",config = custom.settings)
-
-par(mfrow=c(1,2))
-plot(tt$Y,pch=21,bg=rainbow(22)[class2], main="tSNE", ylim= range(tt$Y[,1]), xlim = range(tt$Y[,2]))
-plot(res_KODAMA_tSNE,pch=21,bg=rainbow(22)[class2], main="KODAMA-tSNE", ylim= range(tt$Y[,1]), xlim = range(tt$Y[,2]))
-
-```
-
-![This is an image](https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/KODAMA-tsne.png))
-
-# all KODAMA
-
-```
-
-library(KODAMA)
-data(MetRef)
-u=MetRef$data
-u=u[,-which(colSums(u)==0)]
-u=normalization(u)$newXtrain
-u=scaling(u)$newXtrain
-class=as.numeric(as.factor(MetRef$gender))
-class2=as.numeric(as.factor(MetRef$donor))
-
-res_MDS=cmdscale(dist(u))
-res_tSNE=Rtsne(u,perplexity = 20)$Y
+res_MDS=cmdscale(dist(ma))
+res_tSNE=Rtsne(ma,perplexity = 20)$Y
 custom.settings = umap.defaults
 custom.settings$n_neighbors=20
-res_UMAP = umap(u, config = custom.settings)$layout
+res_UMAP = umap(ma, config = custom.settings)$layout
 
-kk=KODAMA.matrix(u)
+kk=KODAMA.matrix(ma)
+res_KODAMA_MDS=KODAMA.visualization(kk,method = "MDS")
+res_KODAMA_tSNE=KODAMA.visualization(kk,method = "t-SNE")
 
-custom.settings = Rtsne.defaults
-custom.settings$perplexity=20
-res_KODAMA_tSNE=KODAMA.visualization(kk1,method = "t-SNE",config = custom.settings)
-    
-custom.settings = umap.defaults
-custom.settings$n_neighbors=20
-res_KODAMA_UMAP=KODAMA.visualization(kk1,method = "UMAP",config = custom.settings)
+#custom.settings = umap.defaults
+#custom.settings$n_neighbors=20
+res_KODAMA_UMAP=KODAMA.visualization(kk,method = "UMAP",config = custom.settings)
 
-par(mfrow=c(2,3))
 
-par(mfrow=c(2,3))
+par(mfrow = c(2,3),
+   oma = c(2,2,0,0) + 0.1,
+   mar = c(1,1,1,1) + 1)
 
-plot1 <-plot(res_MDS,pch=21,bg=rainbow(22)[class2],main="MDS", xlab= "Fisrt dimention", ylab= "Second dimention")
-plot2 <-plot(res_tSNE,pch=21,bg=rainbow(22)[class2],main="tSNE")
-plot3 <-plot(res_UMAP,pch=21,bg=rainbow(22)[class2],main="UMAP")
-
-plot4 <-plot(res_KODAMA_MDS,pch=21,bg=rainbow(22)[class2],main="KODAMA_MDS",ylim=range(res_KODAMA_MDS[,1]))
-plot5 <-plot(res_KODAMA_tSNE,pch=21,bg=rainbow(22)[class2],main="KODAMA_tSNE")
-plot6 <-plot(res_KODAMA_UMAP,pch=21,bg=rainbow(22)[class2],main="KODAMA_UMAP")
+labels <- rep(c("#FF0000","#0000FF","#008000","#FFFF00"),each= 50)
+plot(res_MDS,pch=21,bg=labels,main="MDS")
+plot(res_tSNE,pch=21,bg=labels,main="tSNE")
+plot(res_UMAP,pch=21,bg=labels,main="UMAP")
+plot(res_KODAMA_MDS,pch=21,bg=labels,main="KODAMA_MDS",ylim=range(res_KODAMA_MDS[,1]))
+plot(res_KODAMA_tSNE,pch=21,bg=labels,main="KODAMA_tSNE")
+plot(res_KODAMA_UMAP,pch=21,bg=labels,main="KODAMA_UMAP")
+title(xlab = "Fisrt dimention",
+      ylab = "Second dimention",
+      outer = TRUE, line = 0.01)
 
 ```
 
