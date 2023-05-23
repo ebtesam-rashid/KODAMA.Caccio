@@ -35,7 +35,7 @@ title(xlab = "Fisrt dimention", ylab = "Second dimention", outer = TRUE, line = 
 ```
 <p>
   <p align="center">
-    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/metabolomics.png" alt="hello-light" height="220" width="210" />
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/metabolomics.png" alt="hello-light" height="800" width="800" />
   </p>
 </p>
 
