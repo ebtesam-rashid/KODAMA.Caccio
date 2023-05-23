@@ -34,6 +34,9 @@ plot(res_KODAMA_UMAP,pch=21,bg=rainbow(22)[class],main="KODAMA_UMAP")
 title(xlab = "Fisrt dimention", ylab = "Second dimention", outer = TRUE, line = 0.01)
 ```
 
-![This is an image](https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/metabolomics.png)
+![This is an image]<p align="center">
+  <img width="460" height="300" src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/metabolomics.png>
+</p>
+
 
 
