@@ -32,6 +32,7 @@ res_KODAMA_UMAP=KODAMA.visualization(kk,method = "UMAP",config = custom.settings
 
 ```
 To visualize the clusters:
+
 a) According to the gender
 
 ```
