@@ -38,10 +38,16 @@ data=log2(data+1)
 
 pca=prcomp(data)$x[,1:50]
 
-kk=KODAMA(pca,landmarks = 1000)
-plot(kk$scores,pch=21,bg=ta[,"cluster_color"])
+kk=KODAMA.matrix(pca)
+res_KODAMA_tSNE <- KODAMA.visualization(kk)
+plot(res_KODAMA_tSNE,pch=21,bg=ta[,"cluster_color"],main="KODAMA", xlab= "Fisrt dimension", ylab = "Second dimension")
+
 
 ```
-![This is an image](https://github.com/tkcaccia/Documents/blob/main/Tasic.png)
+<p>
+  <p align="center">
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/final%20single%20cell%20kodama.png" alt="hello-light" height="700" width="800" />
+  </p>
+</p>
 
 
