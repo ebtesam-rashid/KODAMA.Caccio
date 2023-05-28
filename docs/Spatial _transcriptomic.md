@@ -5,8 +5,9 @@ To show the how KODAMA could deal with noisy datasets compared to other dimensio
 ### Example 1: Simulated data set 
 
 KODAMA, tSNE, UMAP are applied to simulated data set of two dimention with different degrees of noisy (from 0 to 20). The following script to compare the effect of different dimentionallity reduction algorithms on a simulated data set of 8 noisy dimensions.
+
 ```
-#Create dataset
+#define function to create dataset
 
 vertex = function(vertix=c(0,10),dims=2){
   out=as.matrix(vertix)
