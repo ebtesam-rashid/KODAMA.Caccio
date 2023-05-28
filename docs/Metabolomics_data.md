@@ -3,8 +3,6 @@
 The data belong to a cohort of 22 healthy donors (11 male and 11 female) where each provided about 40 urine samples over the time course of approximately 2 months, for a total of 873 samples. Each sample was analysed by Nuclear Magnetic Resonance Spectroscopy. Each spectrum was divided in 450 spectral bins.
 
 ```
-
-
 library(KODAMA)
 data(MetRef)
 u=MetRef$data
@@ -50,7 +48,7 @@ title(xlab = "Fisrt dimention", ylab = "Second dimention", outer = TRUE, line = 
 ```
 <p>
   <p align="center">
-    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/metab.gender.png" alt="hello-light" height="700" width="800" />
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/metab%20kodama.png" alt="hello-light" height="700" width="800" />
   </p>
 </p>
 
