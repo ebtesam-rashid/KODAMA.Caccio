@@ -68,7 +68,7 @@ title(xlab = "Fisrt dimention", ylab = "Second dimention", outer = TRUE, line = 
 ```
 <p>
   <p align="center">
-    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/metab.donor.png" alt="hello-light" height="700" width="800" />
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/metab%20kodama.png" alt="hello-light" height="700" width="800" />
   </p>
 </p>
 
