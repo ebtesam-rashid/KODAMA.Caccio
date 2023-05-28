@@ -2,7 +2,9 @@
 
 To show the how KODAMA could deal with noisy datasets compared to other dimensionality reduction widely used methods such as Uniform Manifold Approximation and Projection (UMAP) and t-Distributed Stochastic Neighbour Embedding (t-SNE), the following simulated data will be used.
 
-### Example 1: simulated data set
+### Example 1: Simulated data set 
+
+KODAMA, tSNE, UMAP are applied to simulated data set of two dimention with different degrees of noisy (from 0 to 20). The following script to compare the effect of different dimentionallity reduction algorithms on a simulated data set of 8 noisy dimentions.
 ```
 library("KODAMA")
 library("cluster")
