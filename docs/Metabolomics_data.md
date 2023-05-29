@@ -2,6 +2,9 @@
 
 The data belong to a cohort of 22 healthy donors (11 male and 11 female) where each provided about 40 urine samples over the time course of approximately 2 months, for a total of 873 samples. Each sample was analysed by Nuclear Magnetic Resonance Spectroscopy. Each spectrum was divided in 450 spectral bins.
 
+### Tutorial
+
+1. Data upload and processing 
 
 ```
 data(MetRef)
@@ -11,22 +14,28 @@ u=normalization(u)$newXtrain
 u=scaling(u)$newXtrain
 class=as.numeric(as.factor(MetRef$gender))
 class2=as.numeric(as.factor(MetRef$donor))
+```
 
+2. Apply MDS, tSNE and UMAP
+
+```
 res_MDS=cmdscale(dist(u))
-res_tSNE=Rtsne(u,perplexity = 20)$Y
+res_tSNE=Rtsne(u)$Y
 custom.settings = umap.defaults
 custom.settings$n_neighbors=20
 res_UMAP = umap(u, config = custom.settings)$layout
+```
 
+3. Apply KODAMA
+
+```
 kk=KODAMA.matrix(u,f.par = 50)
-
 res_KODAMA_MDS=KODAMA.visualization(kk,method = "MDS")
 res_KODAMA_tSNE=KODAMA.visualization(kk,method = "t-SNE")
 res_KODAMA_UMAP=KODAMA.visualization(kk,method = "UMAP")
-
 ```
-To visualize the clusters:
 
+To visualize the differetn clustering algorithmss:
 a) According to the gender
 
 ```
@@ -55,7 +64,6 @@ plot(res_UMAP,pch=21,bg=rainbow(22)[class2],main="UMAP")
 plot(res_KODAMA_MDS,pch=21,bg=rainbow(22)[class2],main="KODAMA_MDS",)
 plot(res_KODAMA_tSNE,pch=21,bg=rainbow(22)[class2],main="KODAMA_tSNE")
 plot(res_KODAMA_UMAP,pch=21,bg=rainbow(22)[class2],main="KODAMA_UMAP")
-
 
 ```
 <p>
