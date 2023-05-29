@@ -17,7 +17,6 @@ class2=as.numeric(as.factor(MetRef$donor))
 ```
 
 2. Apply MDS, tSNE and UMAP
-
 ```
 res_MDS=cmdscale(dist(u))
 res_tSNE=Rtsne(u)$Y
@@ -39,14 +38,12 @@ res_KODAMA_UMAP=KODAMA.visualization(kk,method = "UMAP")
 
 ```
 par(mfrow = c(2,3))
-
 plot(res_MDS,pch=21,bg=rainbow(2)[class],main="MDS")
 plot(res_tSNE,pch=21,bg=rainbow(2)[class],main="tSNE")
 plot(res_UMAP,pch=21,bg=rainbow(2)[class],main="UMAP")
 plot(res_KODAMA_MDS,pch=21,bg=rainbow(2)[class],main="KODAMA_MDS",)
 plot(res_KODAMA_tSNE,pch=21,bg=rainbow(2)[class],main="KODAMA_tSNE")
 plot(res_KODAMA_UMAP,pch=21,bg=rainbow(2)[class],main="KODAMA_UMAP")
-
 ```
 <p>
   <p align="center">
@@ -63,7 +60,6 @@ plot(res_UMAP,pch=21,bg=rainbow(22)[class2],main="UMAP")
 plot(res_KODAMA_MDS,pch=21,bg=rainbow(22)[class2],main="KODAMA_MDS",)
 plot(res_KODAMA_tSNE,pch=21,bg=rainbow(22)[class2],main="KODAMA_tSNE")
 plot(res_KODAMA_UMAP,pch=21,bg=rainbow(22)[class2],main="KODAMA_UMAP")
-
 ```
 <p>
   <p align="center">
