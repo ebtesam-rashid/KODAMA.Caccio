@@ -21,10 +21,10 @@ class2=as.numeric(as.factor(MetRef$donor))
 ```
 res_MDS=cmdscale(dist(u))
 res_tSNE=Rtsne(u)$Y
-res_UMAP = umap(u, config = custom.settings)$layout
+res_UMAP = umap(u)$layout
 ```
 
-3. Apply KODAMA
+3. Apply KODAMA (The f. par has been adjusted to 50 which means 50 princible components for the Partial Least Square "PLS" classifier)
 
 ```
 kk=KODAMA.matrix(u,f.par = 50)
