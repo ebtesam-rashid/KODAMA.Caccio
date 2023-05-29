@@ -21,8 +21,6 @@ class2=as.numeric(as.factor(MetRef$donor))
 ```
 res_MDS=cmdscale(dist(u))
 res_tSNE=Rtsne(u)$Y
-custom.settings = umap.defaults
-custom.settings$n_neighbors=20
 res_UMAP = umap(u, config = custom.settings)$layout
 ```
 
