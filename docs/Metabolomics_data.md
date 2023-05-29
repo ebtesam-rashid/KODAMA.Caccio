@@ -33,7 +33,7 @@ res_KODAMA_tSNE=KODAMA.visualization(kk,method = "t-SNE")
 res_KODAMA_UMAP=KODAMA.visualization(kk,method = "UMAP")
 ```
 
-To visualize the different clustering algorithmss:
+4. Visualize the different clustering algorithmss:
 a) According to the gender
 
 ```
