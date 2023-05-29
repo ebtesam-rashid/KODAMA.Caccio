@@ -43,7 +43,7 @@ plot(res_KODAMA_UMAP,pch=21,bg=labels,main="KODAMA_UMAP")
 ```
 <p>
   <p align="center">
-    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/one%20simulated.png" alt="hello-light" height="500" width="700" />
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/final%20one%20simulated.png" alt="hello-light" height="500" width="700" />
   </p>
 </p>
 
@@ -107,12 +107,23 @@ plot1=ggplot(pData(target_demoData), aes(x = MDS1, y = MDS2,color = segment, sha
 plot2=ggplot(pData(target_demoData), aes(x = KODAMA1.MDS, y = KODAMA2.MDS, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
 grid.arrange(plot1, plot4, ncol=2)
 ```
+<p>
+  <p align="center">
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/MDS%20geomx.png" alt="hello-light" height="500" width="700" />
+  </p>
+</p>
+
 #### tSNA vs KODAMA.tSNE
 ```
 plot3=ggplot(pData(target_demoData), aes(x = tSNE1, y = tSNE2, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
 plot4=ggplot(pData(target_demoData), aes(x = KODAMA1.tSNE, y = KODAMA2.tSNE, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
 grid.arrange(plot2, plot5, ncol=2)
 ```
+<p>
+  <p align="center">
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/tsne%20geomx.png" alt="hello-light" height="500" width="700" />
+  </p>
+</p>
 
 #### UMAP vs KODAM.UMAP
 ```
@@ -120,4 +131,9 @@ plot5=ggplot(pData(target_demoData), aes(x = UMAP1, y = UMAP2, color = segment, 
 plot6=ggplot(pData(target_demoData), aes(x = KODAMA1.UMAP, y = KODAMA2.UMAP, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
 grid.arrange(plot3, plot6, ncol=2)
 ```
+<p>
+  <p align="center">
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/umap%20geomx.png" alt="hello-light" height="500" width="700" />
+  </p>
+</p>
 
