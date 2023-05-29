@@ -43,7 +43,7 @@ plot(res_KODAMA_UMAP,pch=21,bg=labels,main="KODAMA_UMAP")
 ```
 <p>
   <p align="center">
-    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/one%20simulated.png" alt="hello-light" height="700" width="800" />
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/one%20simulated.png" alt="hello-light" height="500" width="700" />
   </p>
 </p>
 
