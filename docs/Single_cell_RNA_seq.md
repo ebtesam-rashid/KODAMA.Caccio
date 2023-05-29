@@ -57,8 +57,9 @@ res_KODAMA_tSNE <- KODAMA.visualization(kk)
 plot(res_KODAMA_tSNE,pch=21,bg=ta[,"cluster_color"],main="KODAMA", xlab= "Fisrt dimension", ylab = "Second dimension")
 ```
 
+6. Plot KODAMA result
 
-```
+
 <p>
   <p align="center">
     <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/final%20single%20cell%20kodama.png" alt="hello-light" height="500" width="700" />
