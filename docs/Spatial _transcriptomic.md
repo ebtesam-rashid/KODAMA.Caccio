@@ -47,4 +47,77 @@ plot(res_KODAMA_UMAP,pch=21,bg=labels,main="KODAMA_UMAP")
   </p>
 </p>
 
+## Example 2: GEOMx data
+The GeoMx Digital Spatial Profiler (DSP) is a platform for capturing spatially resolved high-plex gene (or protein) expression data from tissue [Merritt et al., 2020](https://pubmed.ncbi.nlm.nih.gov/32393914/). In particular, formalin-fixed paraffin-embedded (FFPE) or fresh-frozen (FF) tissue sections are stained with barcoded in-situ hybridization probes that bind to endogenous mRNA transcripts. 
+GeoMx kidney dataset has been created with the human whole transcriptome atlas (WTA) assay. The dataset includes 4 diabetic kidney disease (DKD) and 3 healthy kidney tissue samples. Regions of interest (ROI) were spatially profiled to focus on two different kidney structures: tubules or glomeruli. One glomerular ROI contains the entirety of a single glomerulus. Each tubular ROI contains multiple tubules that were segmented into distal (PanCK+) and proximal (PanCK-) tubule areas of illumination (AOI). The preprocessing workflow is described [here](https://www.bioconductor.org/packages/release/workflows/vignettes/GeoMxWorkflows/inst/doc/GeomxTools_RNA-NGS_Analysis.html).
+An imputing procedure was added to the original [R script](https://www.bioconductor.org/packages/release/workflows/vignettes/GeoMxWorkflows/inst/doc/GeomxTools_RNA-NGS_Analysis.R).
+
+### Tutorial
+
+#### Install required packages
+```
+if (!require("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install("impute")
+install.packages("KODAMA")
+library(impute)
+library(KODAMA)
+```
+#### Ulpoad data
+```
+data=t(log2(assayDataElement(target_demoData , elt = "q_norm")))
+data[is.infinite(data)]=NA
+data=impute.knn(data)$data
+```
+#### Run PCA
+```
+data=prcomp(data)$x[,1:100]
+```
+#### Run MDA
+```
+MDS_out=cmdscale(dist(data))
+pData(target_demoData)[, c("MDS1", "MDS2")] <- MDS_out[, c(1,2)]
+```
+#### run tSNE
+```
+set.seed(42) # set the seed for tSNE as well
+tsne_out <- Rtsne(data, perplexity = ncol(target_demoData)*.15)
+pData(target_demoData)[, c("tSNE1", "tSNE2")] <- tsne_out$Y[, c(1,2)]
+```
+#### run UMAP
+```
+umap_out <- umap(data, config = custom_umap)
+pData(target_demoData)[, c("UMAP1", "UMAP2")] <- umap_out$layout[, c(1,2)]
+```
+# run KODAMA
+```
+kk=KODAMA.matrix(data)
+res= KODAMA.visualization(kk)
+res1= KODAMA.visualization(kk,method = "MDS")
+res2= KODAMA.visualization(kk,method = "t-SNE")
+res3= KODAMA.visualization(kk,method = "UMAP")
+pData(target_demoData)[, c("KODAMA1.MDS", "KODAMA2.MDS")] <- res1
+pData(target_demoData)[, c("KODAMA1.tSNE", "KODAMA2.tSNE")] <- res2
+pData(target_demoData)[, c("KODAMA1.UMAP", "KODAMA2.UMAP")] <- res3
+```
+#### MDS vs KODAMA.MDS
+```
+require("gridExtra")
+plot1=ggplot(pData(target_demoData), aes(x = MDS1, y = MDS2,color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
+plot2=ggplot(pData(target_demoData), aes(x = KODAMA1.MDS, y = KODAMA2.MDS, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
+grid.arrange(plot1, plot4, ncol=2)
+```
+#### tSNA vs KODAMA.tSNE
+```
+plot3=ggplot(pData(target_demoData), aes(x = tSNE1, y = tSNE2, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
+plot4=ggplot(pData(target_demoData), aes(x = KODAMA1.tSNE, y = KODAMA2.tSNE, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
+grid.arrange(plot2, plot5, ncol=2)
+```
+
+#### UMAP vs KODAM.UMAP
+```
+plot5=ggplot(pData(target_demoData), aes(x = UMAP1, y = UMAP2, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
+plot6=ggplot(pData(target_demoData), aes(x = KODAMA1.UMAP, y = KODAMA2.UMAP, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
+grid.arrange(plot3, plot6, ncol=2)
+```
 
