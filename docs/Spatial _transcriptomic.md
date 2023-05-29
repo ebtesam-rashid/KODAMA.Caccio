@@ -109,7 +109,7 @@ grid.arrange(plot1, plot4, ncol=2)
 ```
 <p>
   <p align="center">
-    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/MDS%20geomx.png" alt="hello-light" height="300" width="300" />
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/MDS%20geomx.png" alt="hello-light" height="300" width="700" />
   </p>
 </p>
 
@@ -121,7 +121,7 @@ grid.arrange(plot2, plot5, ncol=2)
 ```
 <p>
   <p align="center">
-    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/tsne%20geomx.png" alt="hello-light" height="400" width="300" />
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/tsne%20geomx.png" alt="hello-light" height="400" width="700" />
   </p>
 </p>
 
@@ -133,7 +133,7 @@ grid.arrange(plot3, plot6, ncol=2)
 ```
 <p>
   <p align="center">
-    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/umap%20geomx.png" alt="hello-light" height="300" width="300" />
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/umap%20geomx.png" alt="hello-light" height="300" width="700" />
   </p>
 </p>
 
