@@ -34,6 +34,7 @@ res_KODAMA_UMAP=KODAMA.visualization(kk,method = "UMAP")
 ```
 
 4. Visualize the different clustering algorithmss:
+
 a) According to the gender
 
 ```
