@@ -34,7 +34,7 @@ res_KODAMA_UMAP=KODAMA.visualization(kk,method = "UMAP")
 
 4. Visualize the different clustering algorithmss:
 
-  a) According to the gender
+  a) labelled by the gender
 
 ```
 par(mfrow = c(2,3))
@@ -51,7 +51,7 @@ plot(res_KODAMA_UMAP,pch=21,bg=rainbow(2)[class],main="KODAMA_UMAP")
   </p>
 </p>
 
-  b) According to the donor
+  b) labelled by the donor
 
 ```
 plot(res_MDS,pch=21,bg=rainbow(22)[class2],main="MDS")
