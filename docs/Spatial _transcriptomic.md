@@ -69,11 +69,7 @@ data=t(log2(assayDataElement(target_demoData , elt = "q_norm")))
 data[is.infinite(data)]=NA
 data=impute.knn(data)$data
 ```
-#### Run PCA
-```
-data=prcomp(data)$x[,1:100]
-```
-#### Run MDA
+#### Run MDS
 ```
 MDS_out=cmdscale(dist(data))
 pData(target_demoData)[, c("MDS1", "MDS2")] <- MDS_out[, c(1,2)]
@@ -105,11 +101,119 @@ pData(target_demoData)[, c("KODAMA1.UMAP", "KODAMA2.UMAP")] <- res3
 require("gridExtra")
 plot1=ggplot(pData(target_demoData), aes(x = MDS1, y = MDS2,color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
 plot2=ggplot(pData(target_demoData), aes(x = KODAMA1.MDS, y = KODAMA2.MDS, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
-grid.arrange(plot1, plot4, ncol=2)
+grid.arrange(plot1, plot2, ncol=2)
 ```
 <p>
   <p align="center">
     <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/MDS%20geomx.png" alt="hello-light" height="300" width="600" />
+  </p>
+</p>
+
+#### tSNA vs KODAMA.tSNE
+```
+plot3=ggplot(pData(target_demoData), aes(x = tSNE1, y = tSNE2, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
+plot4=ggplot(pData(target_demoData), aes(x = KODAMA1.tSNE, y = KODAMA2.tSNE, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
+grid.arrange(plot3, plot4, ncol=2)
+```
+<p>
+  <p align="center">
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/tsne%20geomx.png" alt="hello-light" height="300" width="600" />
+  </p>
+</p>
+
+#### UMAP vs KODAM.UMAP
+```
+plot5=ggplot(pData(target_demoData), aes(x = UMAP1, y = UMAP2, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
+plot6=ggplot(pData(target_demoData), aes(x = KODAMA1.UMAP, y = KODAMA2.UMAP, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
+grid.arrange(plot5, plot6, ncol=2)
+```
+<p>
+  <p align="center">
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/umap%20geomx.png" alt="hello-light" height="300" width=600" />
+  </p>
+</p>
+
+## Example 3: GeoMx dataset2
+This dataset represent the quantitate transcript and protein abundance in spatially distinct regions of metastic prostate cancer tissue retreived by GeoMx Digital Spatial Profiler (DSP)  [Brady et al., 2021](https://www.nature.com/articles/s41467-021-21615-4). This study entails leaving 141 ROIs from 53 metastases (26 patients). 
+                                                                                                                                           
+### Tutorial
+#### Install required packages
+ ```
+library(KODAMA)
+library(readxl)
+library(tidyr)
+library(ggplot2)
+library(gridExtra)
+
+#### Ulpoad data
+```
+dat3 <- as.data.frame(read.csv("Supplementary_Data_File_3.txt", header=TRUE, sep = "\t", dec = "."))
+dat4 <- as.data.frame(read.csv("Supplementary_Data_File_4.txt", header=TRUE, sep = "\t", dec = "."))
+dat5<- as.data.frame(read_excel("41467_2021_21615_MOESM5_ESM.xlsx", skip = 1))
+```
+### Data preprocessing
+```
+rownames(dat5) <- dat5[,"Sample_ID"]
+sel <- c( "Gene", "Negative_Normalized", "Sample_ID")
+g <- dat3[,sel]
+g2 <- as.data.frame(g |> pivot_wider(names_from = Gene, values_from =Negative_Normalized ))
+rownames(g2) <- g2$Sample_ID
+g2 <- g2[,-1]
+sel=intersect(rownames(g2),rownames(dat5))
+g3=g2[sel,]
+metadata=dat5[sel,]
+sel <- c( "protein", "count_ngs_norm", "Sample_ID")
+Sample_ID=paste(dat4$tissue_id,dat4$punch,sep="_")
+p=data.frame(Sample_ID=Sample_ID,count_ngs_norm=dat4$count_ngs_norm,Protein=dat4$Protein)
+p=p[!is.na(dat4$tissue_id) & !is.na(dat4$punch),]
+p2 <- as.data.frame(p |> pivot_wider(names_from = Protein, values_from =count_ngs_norm ))
+rownames(p2) <- p2$Sample_ID
+sel=intersect(rownames(g2),rownames(dat5))
+p3=p2[sel,]
+``` 
+#### Run MDS
+```
+res_MDS=cmdscale(dist(g3))
+metadata[, c("MDS1", "MDS2")] <- res_MDS[, c(1,2)]
+```
+#### run tSNE
+```
+set.seed(42) # set the seed for tSNE as well
+tsne_out <- Rtsne(g3, perplexity = 10)
+metadata[, c("tSNE1", "tSNE2")] <- tsne_out$Y[, c(1,2)]
+```
+#### run UMAP
+```
+custom.settings = umap.defaults
+custom.settings$n_neighbors=10
+umap_out <- umap(g3,config = custom.settings)
+metadata[, c("UMAP1", "UMAP2")] <- umap_out$layout[, c(1,2)]
+```
+# run KODAMA
+```
+kk=KODAMA.matrix(g3)
+res= KODAMA.visualization(kk)
+res1= KODAMA.visualization(kk,method = "MDS")
+custom.settings$perplexity=10
+custom.settings = Rtsne.defaults
+res2= KODAMA.visualization(kk,method = "t-SNE", config = custom.settings)
+custom.settings = umap.defaults
+custom.settings$n_neighbors=10
+res3= KODAMA.visualization(kk,method = "UMAP", config = custom.settings)
+metadata[, c("KODAMA1.MDS", "KODAMA2.MDS")] <- res1
+metadata[, c("KODAMA1.tSNE", "KODAMA2.tSNE")] <- res2
+metadata[, c("KODAMA1.UMAP", "KODAMA2.UMAP")] <- res3
+```
+#### MDS vs KODAMA.MDS
+```
+Histology=as.factor(metadata$`Histology category`)
+plot1=ggplot(metadata, aes(x = MDS1, y = MDS2, color = class)) + geom_point(aes(fill=Histology), colour="black",pch=21, size=4) + theme_bw()
+plot2=ggplot(pData(target_demoData), aes(x = KODAMA1.MDS, y = KODAMA2.MDS, color = class)) + geom_point(aes(fill=Histology), colour="black",pch=21, size=4) + theme_bw()
+grid.arrange(plot1, plot2, ncol=2)
+```
+<p>
+  <p align="center">
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/tree/main/Figures" alt="hello-light" height="300" width="600" />
   </p>
 </p>
 
@@ -135,13 +239,7 @@ grid.arrange(plot3, plot6, ncol=2)
   <p align="center">
     <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/umap%20geomx.png" alt="hello-light" height="300" width=600" />
   </p>
-</p>
+</p>                  
 
-## Example 3: GeoMx dataset2
-This dataset represent the quantitate transcript and protein abundance in spatially distinct regions of metastic prostate cancer tissue retreived by GeoMx Digital Spatial Profiler (DSP)  [Brady et al., 2021](https://www.nature.com/articles/s41467-021-21615-4). This study entails leaving 141 ROIs from 53 metastases (26 patients). 
-                                                                                                                                           
-### Tutorial
-
-#### Install required packages
                                                                                                                                            
                                                           
