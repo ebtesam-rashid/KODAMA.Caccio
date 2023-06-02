@@ -190,7 +190,7 @@ custom.settings$n_neighbors=10
 umap_out <- umap(g3,config = custom.settings)
 metadata[, c("UMAP1", "UMAP2")] <- umap_out$layout[, c(1,2)]
 ```
-# run KODAMA
+#### run KODAMA
 ```
 kk=KODAMA.matrix(g3)
 res= KODAMA.visualization(kk)
