@@ -214,7 +214,7 @@ grid.arrange(plot1, plot2, ncol=2)
 ```
 <p>
   <p align="center">
-    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/tree/main/Figures" alt="hello-light" height="300" width="600" />
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/MDS%20dat2.png" alt="hello-light" height="300" width="600" />
   </p>
 </p>
 
