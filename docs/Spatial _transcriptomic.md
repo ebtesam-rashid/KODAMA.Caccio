@@ -242,5 +242,49 @@ grid.arrange(plot3, plot6, ncol=2)
   </p>
 </p>                  
 
-                                                                                                                                           
-                                                          
+#### KODAMA.umap clustering according to 
+#### AR gene expression
+```
+values=as.numeric(metadata$`H-score AR (IHC)`)
+v=quantile(values,probs=c(0.2,0.4,0.6,0.8),na.rm = TRUE)
+AR.gene=findInterval(values, v)
+plot6=ggplot(metadata,
+             aes(x = KODAMA1umap, y = KODAMA2umap)) +
+  geom_point(aes(fill=AR.gene), 
+             colour="black",pch=21, size=4) +
+  theme_bw()
+grid.arrange(plot6, ncol=1)
+```
+#### AR protein
+```
+values=as.numeric(p3$AR)
+v=quantile(values,probs=c(0.2,0.4,0.6,0.8),na.rm = TRUE)
+AR.protein=findInterval(values, v)
+plot7=ggplot(metadata,
+             aes(x = KODAMA1umap, y = KODAMA2umap)) +
+  geom_point(aes(fill=AR.protein), 
+             colour="black",pch=21, size=4) +
+  theme_bw()
+grid.arrange(plot7, ncol=1)
+```
+<p>
+  <p align="center">
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/AR.png" alt="hello-light" height="300" width=600" />
+  </p>
+</p>                  
+#### CD68 
+values=as.numeric(p3$CD68)
+v=quantile(values,probs=c(0.2,0.4,0.6,0.8),na.rm = TRUE)
+CD68=findInterval(values, v)
+plot7=ggplot(metadata,
+             aes(x = KODAMA1umap, y = KODAMA2umap)) +
+  geom_point(aes(fill=CD68), 
+             colour="black",pch=21, size=4) +
+  theme_bw()
+grid.arrange(plot7, ncol=1)
+```
+<p>
+  <p align="center">
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/CD68.png" alt="hello-light" height="300" width=600" />
+  </p>
+</p>                                                                                                                                 
