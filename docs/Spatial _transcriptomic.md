@@ -7,6 +7,11 @@ To show the how KODAMA could deal with noisy datasets compared to other dimensio
 KODAMA, tSNE, UMAP are applied to simulated data set of two dimention with different degrees of noisy (from 0 to 20). The following script to compare the effect of different dimentionallity reduction algorithms on a simulated data set of 8 noisy dimensions.
 
 ### Tutorial
+### Required libraries
+library(ggplot)
+library(gridExtra)
+library(Rmisc)
+library(gmodels)
 
 1. The data is simulated with vertix function from KODAMA package with 2 dimensions and 8 noisy dimensions.
 2. The generated data is scaled
@@ -44,6 +49,34 @@ plot(res_KODAMA_UMAP,pch=21,bg=labels,main="KODAMA_UMAP")
 <p>
   <p align="center">
     <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/final%20one%20simulated.png" alt="hello-light" height="500" width="700" />
+  </p>
+</p>
+
+#### Compareing efficiency of clustering algorithm with different noisy 
+```
+sum <- data.frame(matrix(NA, nrow=20))
+df <- data.frame()
+files <- list.files(path=address, pattern="*.xlsx")
+for (i in 1:length(files) {
+ name <- tools::file_path_sans_ext(files[i])
+ file <- as.data.frame(read_excel(files[i])) ## if you have headers in your files ##
+ df <- as.data.frame(t(as.data.frame(sapply(file,CI))))
+ rownames(df) <- paste(rep(1:20),name, sep = ":")
+ sum <- cbind(sum, df)
+ names[i] <- name }
+sum <- sum[,-1]
+sum <- melt(setDT(sum), measure.vars = patterns("^mean", "^lower", "^upper"),
+             value.name = c("COEF_EST", "COEF_LOWER", "COEF_UPPER"))
+noisy= rep(c(1:20),6)
+sum<- cbind(noisy, sum)
+colnames(sum)[colnames(sum)=="variable"] <- "test"
+ggplot(sum, aes(x = noisy, y = COEF_EST, ymin = COEF_LOWER, ymax = COEF_UPPER)) +
+  geom_ribbon(aes(fill = test), alpha = 0.3) +
+  geom_line(aes(color = test))
+```
+<p>
+  <p align="center">
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/CI.png" alt="hello-light" height="300" width="600" />
   </p>
 </p>
 
@@ -98,7 +131,6 @@ pData(target_demoData)[, c("KODAMA1.UMAP", "KODAMA2.UMAP")] <- res3
 ```
 #### MDS vs KODAMA.MDS
 ```
-require("gridExtra")
 plot1=ggplot(pData(target_demoData), aes(x = MDS1, y = MDS2,color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
 plot2=ggplot(pData(target_demoData), aes(x = KODAMA1.MDS, y = KODAMA2.MDS, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
 grid.arrange(plot1, plot2, ncol=2)
