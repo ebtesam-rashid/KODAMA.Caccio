@@ -85,7 +85,7 @@ pData(target_demoData)[, c("tSNE1", "tSNE2")] <- tsne_out$Y[, c(1,2)]
 umap_out <- umap(data, config = custom_umap)
 pData(target_demoData)[, c("UMAP1", "UMAP2")] <- umap_out$layout[, c(1,2)]
 ```
-# run KODAMA
+#### run KODAMA
 ```
 kk=KODAMA.matrix(data)
 res= KODAMA.visualization(kk)
