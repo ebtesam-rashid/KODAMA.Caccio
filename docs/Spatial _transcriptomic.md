@@ -121,7 +121,7 @@ grid.arrange(plot3, plot4, ncol=2)
   </p>
 </p>
 
-#### UMAP vs KODAM.UMAP
+#### UMAP vs KODAMA.UMAP
 ```
 plot5=ggplot(pData(target_demoData), aes(x = UMAP1, y = UMAP2, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
 plot6=ggplot(pData(target_demoData), aes(x = KODAMA1.UMAP, y = KODAMA2.UMAP, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
