@@ -220,25 +220,25 @@ grid.arrange(plot1, plot2, ncol=2)
 
 #### tSNA vs KODAMA.tSNE
 ```
-plot3=ggplot(pData(target_demoData), aes(x = tSNE1, y = tSNE2, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
-plot4=ggplot(pData(target_demoData), aes(x = KODAMA1.tSNE, y = KODAMA2.tSNE, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
+plot3=ggplot(metadata, aes(x = tSNE1, y = tSNE2, color = class)) + geom_point(aes(fill=Histology), colour="black",pch=21, size=4) + theme_bw()
+plot4=ggplot(metadata, aes(x = KODAMA1.tSNE, color = class)) + geom_point(aes(fill=Histology), colour="black",pch=21, size=4) + theme_bw()
 grid.arrange(plot2, plot5, ncol=2)
 ```
 <p>
   <p align="center">
-    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/tsne%20geomx.png" alt="hello-light" height="300" width="600" />
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/TSNE%20dat2.png" alt="hello-light" height="300" width="600" />
   </p>
 </p>
 
 #### UMAP vs KODAM.UMAP
 ```
-plot5=ggplot(pData(target_demoData), aes(x = UMAP1, y = UMAP2, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
-plot6=ggplot(pData(target_demoData), aes(x = KODAMA1.UMAP, y = KODAMA2.UMAP, color = segment, shape = class)) + geom_point(size = 3) + theme_bw()
+plot5=ggplot(metadata, aes(x = UMAP1, y = UMAP2, color = class)) + geom_point(aes(fill=Histology), colour="black",pch=21, size=4) + theme_bw()
+plot6=ggplot(metadata, aes(x = KODAMA1.UMAP, color = class)) + geom_point(aes(fill=Histology), colour="black",pch=21, size=4) + theme_bw()
 grid.arrange(plot3, plot6, ncol=2)
 ```
 <p>
   <p align="center">
-    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/umap%20geomx.png" alt="hello-light" height="300" width=600" />
+    <img src="https://github.com/ebtesam-rashid/KODAMA.Caccio/blob/main/Figures/UMAP%20dat2.png" alt="hello-light" height="300" width=600" />
   </p>
 </p>                  
 
